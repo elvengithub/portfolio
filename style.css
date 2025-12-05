@@ -1,20 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Exo 2', sans-serif;
-    scroll-behavior: smooth; /* Smooth scroll */
+    font-family: 'Outfit', 'Exo 2', sans-serif;
+    scroll-behavior: smooth;
+    position: relative;
+}
+
+/* Animated AI Orbs */
+.ai-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.3;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+.ai-orb-1 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #f97316, #fbbf24);
+    top: 10%;
+    left: 10%;
+    animation: float 15s infinite ease-in-out;
+}
+
+.ai-orb-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #ea580c, #f97316);
+    top: 50%;
+    right: 10%;
+    animation: float 20s infinite ease-in-out reverse;
+}
+
+.ai-orb-3 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, #d97706, #fcd34d);
+    bottom: 10%;
+    left: 50%;
+    animation: float 18s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+    50% {
+        transform: translateY(-30px) translateX(20px);
+    }
+}
+
+/* Navbar */
+nav {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+nav a {
+    color: #e5e7eb;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #fb923c, #fcd34d);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 nav a.active {
-    color: #06b6d4; /* Cyan for active link */
-    font-weight: 600;
+    color: #fb923c;
+    font-weight: 700;
 }
 
+nav a.active::after {
+    width: 100%;
+}
+
+/* Mobile Menu */
+#mobile-menu a {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(251, 146, 60, 0.2);
+}
+
+/* Fade In Animation */
 .fade-in {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .fade-in.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Skill Cards */
+.skill-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+/* Project Cards */
+.project-card {
+    transition: all 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Glow Effect */
+.animate-glow {
+    animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(251, 146, 60, 0.5), 0 0 40px rgba(251, 146, 60, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(251, 146, 60, 0.8), 0 0 60px rgba(251, 146, 60, 0.5);
+    }
+}
+
+/* Form Focus Effects */
+input:focus,
+textarea:focus {
+    box-shadow: 0 0 20px rgba(251, 146, 60, 0.3);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #fb923c, #fcd34d);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #ea580c, #f97316);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .text-4xl {
+        font-size: 2rem;
+    }
+    
+    .text-5xl {
+        font-size: 2.5rem;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
 }
